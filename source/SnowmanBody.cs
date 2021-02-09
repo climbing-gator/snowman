@@ -9,6 +9,9 @@ namespace Snowman
         private string[] bodyParts = new string[] { "bottom", "middle", "head", "left arm", "right arm", "left eye", "right eye", "mouth", "nose" };
         private int numberOfSnowmanParts = 0;
         
+        public SnowmanBody()
+        { }
+
         public void AddBodyPart() 
         {
             numberOfSnowmanParts++;
