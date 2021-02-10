@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Snowman
@@ -7,7 +8,7 @@ namespace Snowman
     class Words
     {
         public string currentWord = string.Empty;
-        private string[] allWords = new string[] { };
+        private List<string> allWords = new List<string> ();
         private int currentWordIndex = 0;
         public Words()
         {
@@ -15,15 +16,28 @@ namespace Snowman
 
         public static Words LoadWords(string filePath)
         {
-            //stream = File.Open(filePath);
-            // foreach (line in stream){allWords[] = line}
-            //currentWord = allWords[currentWordIndex];
-            return new Words();
+            var words = new Words();
+            using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                //TODO: Handle bad filepath
+                using (var reader = new StreamReader(stream))
+                {
+                    string line = string.Empty;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        words.allWords.Add(line);
+                    }
+
+                }
+
+                words.currentWord = words.allWords[0];
+                return words;
+            }
         }
 
         public void GetNextWord()
         {
-            if (currentWordIndex++ <= allWords.Length)
+            if (currentWordIndex++ <= allWords.Count)
             {
                 currentWord = allWords[++currentWordIndex];
             }
