@@ -8,6 +8,9 @@ namespace Snowman
     class Words
     {
         public string currentWord = string.Empty;
+        public string guessedWord = string.Empty;
+        public bool guessedCorrectWord = false;
+        private const string blankSpace = "_____ ";
         private List<string> allWords = new List<string> ();
         private int currentWordIndex = 0;
         public Words()
@@ -19,7 +22,7 @@ namespace Snowman
             var words = new Words();
             using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                //TODO: Handle bad filepath
+                //TODO: Handle bad filepath, filePath that starts with ""
                 using (var reader = new StreamReader(stream))
                 {
                     string line = string.Empty;
@@ -31,6 +34,10 @@ namespace Snowman
                 }
 
                 words.currentWord = words.allWords[0];
+                foreach (var letter in words.currentWord)
+                {
+                    words.guessedWord = words.guessedWord + blankSpace; 
+                }
                 return words;
             }
         }
