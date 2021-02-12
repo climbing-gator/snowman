@@ -8,7 +8,7 @@ namespace Snowman
     class Words
     {
         public string currentWord = string.Empty;
-        public string [] guessedWord = { };
+        public string [] guessedWord;
         private const string blankSpace = "_____";
         private List<string> allWords = new List<string> ();
         private int currentWordIndex = 0;
@@ -41,6 +41,7 @@ namespace Snowman
 
         private void initializeGuessedWord()
         {
+            guessedWord = new string[currentWord.Length];
             for (int i = 0; i < currentWord.Length; i++)
             {
                 guessedWord[i] = blankSpace; 
