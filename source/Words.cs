@@ -9,7 +9,6 @@ namespace Snowman
     {
         public string currentWord = string.Empty;
         public string [] guessedWord = { };
-        public bool guessedCorrectWord = false;
         private const string blankSpace = "_____";
         private List<string> allWords = new List<string> ();
         private int currentWordIndex = 0;
@@ -33,21 +32,44 @@ namespace Snowman
 
                 }
 
-                words.currentWord = words.allWords[0];
+                words.currentWord = words.allWords[0].ToLower();
                 words.guessedWord = new string[words.currentWord.Length];
-                for (int i = 0; i < words.currentWord.Length; i++)
-                {
-                    words.guessedWord[i] = blankSpace; 
-                }
+                words.initializeGuessedWord();
                 return words;
             }
         }
 
+        private void initializeGuessedWord()
+        {
+            for (int i = 0; i < currentWord.Length; i++)
+            {
+                guessedWord[i] = blankSpace; 
+            }
+        }
+
+        public bool GuessedCorrectWord()
+        {
+            var guessedWordConcatenated = string.Empty;
+            foreach(string value in guessedWord)
+            {
+                guessedWordConcatenated = guessedWordConcatenated + value;
+            }
+
+            return currentWord.Equals(guessedWordConcatenated);
+        }
+
+        public int RemainingWords()
+        {
+            return allWords.Count - (currentWordIndex + 1);
+        }
+
         public void GetNextWord()
         {
-            if (currentWordIndex++ <= allWords.Count)
+            if (currentWordIndex + 1 < allWords.Count)
             {
-                currentWord = allWords[++currentWordIndex];
+                currentWord = allWords[++currentWordIndex].ToLower();
+                initializeGuessedWord();
+                Console.WriteLine("Here comes the next word to guess...");
             }
             else
             {

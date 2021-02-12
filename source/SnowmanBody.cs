@@ -17,6 +17,11 @@ namespace Snowman
             numberOfSnowmanParts++;
         }
 
+        public void ClearBodyParts()
+        {
+            numberOfSnowmanParts = 0;
+        }
+
         public bool IsComplete()
         {
             if (numberOfSnowmanParts >= bodyParts.Length)
