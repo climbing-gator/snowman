@@ -29,8 +29,7 @@ namespace Snowman
                 }
                 Console.WriteLine();
                 Console.WriteLine("Guess a letter..." + Environment.NewLine);
-                // TODO: Handle non-letters
-                // TODO: Handle more than one char input
+
                 guessedLetter = Console.ReadLine().ToLower()[0];
                 // TODO: convert guess into lowercase or do comparision below disregarding case
                 // convert input into either a correct letter that replaces the space or 

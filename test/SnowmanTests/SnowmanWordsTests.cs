@@ -21,6 +21,33 @@ namespace SnowmanTests
             Assert.Equal(testWordSize, words.currentWord.Length);
             Assert.Equal(testWordSize, words.guessedWord.Length);
         }
+
+        [Fact]
+        public void LoadWords_UserGuessedNonChar_SnowmanDoesNotGrow()
+        {
+        // TODO: Handle non-letters
+        }
+
+        [Fact]
+        public void LoadWords_UserGuessesMultipleCharacters_SnowmanComparesWholeString()
+        {
+        // TODO: Handle more than one char input
+        }
+
+        [Fact]
+        public void LoadWords_UserGuessesCorrectWord_DisplayWinnerText()
+        {
+        }
+
+        [Fact]
+        public void LoadWords_UserGuessesAllIncorrectLetters_SnowmanIsBuilt()
+        {
+        }
+
+        [Fact]
+        public void LoadWords_UserGuessesAllIncorrectLetters_DisplayGameOverText()
+        {
+        }
     }
 
 }

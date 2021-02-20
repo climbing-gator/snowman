@@ -26,7 +26,6 @@ namespace Snowman
             using (stream ??= new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 var words = new Words();
-                //TODO: Handle bad filepath, filePath that starts with ""
                 using (var reader = new StreamReader(stream))
                 {
                     string line = string.Empty;
