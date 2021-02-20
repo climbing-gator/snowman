@@ -4,7 +4,6 @@ C:\Users\Michelle\gitHubRepos\snowman\source\bin\Debug\netcoreapp3.1\Snowman.run
 C:\Users\Michelle\gitHubRepos\snowman\source\bin\Debug\netcoreapp3.1\Snowman.runtimeconfig.dev.json
 C:\Users\Michelle\gitHubRepos\snowman\source\bin\Debug\netcoreapp3.1\Snowman.dll
 C:\Users\Michelle\gitHubRepos\snowman\source\bin\Debug\netcoreapp3.1\Snowman.pdb
-C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.csprojAssemblyReference.cache
 C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.AssemblyInfoInputs.cache
 C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.AssemblyInfo.cs
 C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.csproj.CoreCompileInputs.cache

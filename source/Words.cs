@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Snowman
 {
-    class Words
+    public class Words
     {
         public string currentWord = string.Empty;
         public string [] guessedWord;
@@ -18,9 +18,14 @@ namespace Snowman
 
         public static Words LoadWords(string filePath)
         {
-            var words = new Words();
-            using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            return LoadWords(filePath, new FileStream(filePath, FileMode.Open, FileAccess.Read));
+        }
+
+        internal static Words LoadWords(string filePath, Stream stream)
+        {
+            using (stream ??= new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
+                var words = new Words();
                 //TODO: Handle bad filepath, filePath that starts with ""
                 using (var reader = new StreamReader(stream))
                 {
