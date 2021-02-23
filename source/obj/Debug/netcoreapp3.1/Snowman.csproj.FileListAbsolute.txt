@@ -10,3 +10,4 @@ C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.csp
 C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.dll
 C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.pdb
 C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.genruntimeconfig.cache
+C:\Users\Michelle\gitHubRepos\snowman\source\obj\Debug\netcoreapp3.1\Snowman.csprojAssemblyReference.cache

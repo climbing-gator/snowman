@@ -8,9 +8,9 @@ namespace Snowman
     public class Words
     {
         public string currentWord = string.Empty;
-        public string [] guessedWord;
+        public string[] guessedWord;
         private const string blankSpace = "_____";
-        private List<string> allWords = new List<string> ();
+        private List<string> allWords = new List<string>();
         private int currentWordIndex = 0;
         public Words()
         {
@@ -48,10 +48,18 @@ namespace Snowman
             guessedWord = new string[currentWord.Length];
             for (int i = 0; i < currentWord.Length; i++)
             {
-                guessedWord[i] = blankSpace; 
+                guessedWord[i] = blankSpace;
             }
         }
 
+        public bool GuessedCorrectLetter(char guessedLetter)
+        {
+            return this.currentWord.Contains(guessedLetter);
+        }
+        public bool IsCharacterLetter(char guessedLetter)
+        {
+            return char.IsLetter(guessedLetter);
+        }
         public bool GuessedCorrectWord()
         {
             var guessedWordConcatenated = string.Empty;

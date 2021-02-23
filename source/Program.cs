@@ -4,50 +4,54 @@ namespace Snowman
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             string filePath = string.Empty;
             string gameOverText = string.Empty;
             bool gameOver = false;
+            var userInput = new UserInput();
+            var display = new Display();
+
             if (args.Length < 1)
             {
                 Console.WriteLine("Please provide a file of words to guess");
-                args = new string[] { Console.ReadLine(), };
+                args = new string[] { userInput.GetInput(), };
             }
             filePath = args[0];
 
-            char guessedLetter;
+            char guessedChar;
             //var words = Words.LoadWords(filePath);
             var words = Words.LoadWords("C://Users//Michelle//Desktop//sandbox//words.txt");
             var snowman = new SnowmanBody();
 
             while (!gameOver)
             {
-                foreach (var value in words.guessedWord)
-                {
-                    Console.Write(value + "  ");
-                }
-                Console.WriteLine();
-                Console.WriteLine("Guess a letter..." + Environment.NewLine);
+                display.printGuessText(words);
 
-                guessedLetter = Console.ReadLine().ToLower()[0];
+                guessedChar = userInput.GetInputFirstCharacterToLower();
+                if (!words.IsCharacterLetter(guessedChar))
+                {
+                    display.printNotALetterText(guessedChar);
+                    display.printGuessText(words);
+                    guessedChar = userInput.GetInputFirstCharacterToLower();
+                }
                 // TODO: convert guess into lowercase or do comparision below disregarding case
                 // convert input into either a correct letter that replaces the space or 
                 // a wrong guess, which 'draws' a body part
-                if (words.currentWord.Contains(guessedLetter))
+                if (words.GuessedCorrectLetter(guessedChar))
                 {
                     for (int i = 0; i < words.currentWord.Length; i++)
                     {
-                        if (words.currentWord[i] == guessedLetter)
+                        if (words.currentWord[i] == guessedChar)
                         {
-                            words.guessedWord[i] = guessedLetter.ToString();
+                            words.guessedWord[i] = guessedChar.ToString();
                         }
                     }
 
                     if (words.GuessedCorrectWord())
                     {
-                        Console.WriteLine(words.currentWord);
-                        Console.WriteLine("Winner, winner, chicken dinner!! You won!");
+                        display.printCurrentWord(words);
+                        display.printWinnerText();
                         if (words.RemainingWords() > 0)
                         {
                             words.GetNextWord();
@@ -56,7 +60,7 @@ namespace Snowman
                         else
                         {
                             gameOver = true;
-                            gameOverText = "No more words to guess. Nicely done. Game over.";
+                            display.printNoMoreWordsText();
                         }
                     }
 
@@ -64,16 +68,17 @@ namespace Snowman
                 else
                 {
                     snowman.AddBodyPart();
-                    Console.WriteLine("Wrong guess. Snowman gets a body part.");
+                    // TODO: add print of each body part
+                    display.printSnowmanGetsABodyPartText();
                 }
 
                 if (snowman.IsComplete())
                 { 
                     gameOver = true;
-                    gameOverText = "You built the snowman, sad day. Game over!!!";
+                    display.printSnowmanBuiltText();
+                    display.printSecretWordText(words);
                 }
             }
-            Console.WriteLine(gameOverText);
         }
     }
 }
