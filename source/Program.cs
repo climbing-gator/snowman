@@ -68,8 +68,7 @@ namespace Snowman
                 else
                 {
                     snowman.AddBodyPart();
-                    // TODO: add print of each body part
-                    display.printSnowmanGetsABodyPartText();
+                    display.printWrongGuessText(snowman);
                 }
 
                 if (snowman.IsComplete())

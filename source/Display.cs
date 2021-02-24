@@ -19,6 +19,7 @@ namespace Snowman
 
         public void printCurrentWord(Words words)
         {
+            Console.WriteLine();
             foreach (var value in words.currentWord)
             {
                 Console.Write(value + "  ");
@@ -29,11 +30,28 @@ namespace Snowman
         {
             this.printGuessedWord(words);
             Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("Guess a letter..." + Environment.NewLine);
         }
         public void printNoMoreWordsText()
         {
             Console.WriteLine("No more words to guess. Nicely done. Game over.");
+        }
+        public void printWrongGuessText(SnowmanBody snowman)
+        {
+            Console.WriteLine();
+            printSnowmanGetsABodyPartText();
+            Console.WriteLine();
+            printSnowmanBodyParts(snowman);
+        }
+        public void printSnowmanBodyParts(SnowmanBody snowman)
+        {
+            Console.WriteLine("Your snowman has grown, he has:");
+            foreach (var parts in snowman.userSnowman)
+            {
+                Console.WriteLine(parts);
+            }
+            Console.WriteLine();
         }
         public void printSnowmanGetsABodyPartText()
         {
@@ -45,6 +63,7 @@ namespace Snowman
         }
         public void printWinnerText()
         {
+            Console.WriteLine();
             Console.WriteLine("Winner, winner, chicken dinner!! You won!");
             Console.WriteLine();
         }

@@ -22,16 +22,16 @@ namespace SnowmanTests
         [Fact]
         public void LoadWords_UserGuessedNonLetter_SnowmanDoesNotGrow()
         {
-            string testWord = "apple";
-            var words = MockLoadFile(testWord);
+            //string testWord = "apple";
+            //var words = MockLoadFile(testWord);
 
-            string nonLetter = "5";
-            //TODO: make this a set of parameters
-            using (var stringReader = new StringReader(nonLetter))
-            {
-                // Mock user input
-                Console.SetIn(stringReader);
-            }
+            //string nonLetter = "5";
+            ////TODO: make this a set of parameters
+            //using (var stringReader = new StringReader(nonLetter))
+            //{
+            //    // Mock user input
+            //    Console.SetIn(stringReader);
+            //}
 
         }
 

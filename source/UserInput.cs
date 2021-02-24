@@ -13,6 +13,7 @@ namespace Snowman
 
         public char GetInputFirstCharacterToLower()
         {
+            // TODO: Check for null
             return Console.ReadLine().ToLower()[0];
         }
     }

@@ -7,31 +7,24 @@ namespace Snowman
     class SnowmanBody
     {
         private string[] bodyParts = new string[] { "bottom", "middle", "head", "left arm", "right arm", "left eye", "right eye", "mouth", "nose" };
-        private int numberOfSnowmanParts = 0;
+        public List<string> userSnowman = new List<string>();
         
         public SnowmanBody()
         { }
 
         public void AddBodyPart() 
         {
-            numberOfSnowmanParts++;
+            userSnowman.Add(bodyParts[userSnowman.Count]);
         }
 
         public void ClearBodyParts()
         {
-            numberOfSnowmanParts = 0;
+            userSnowman.Clear();
         }
 
         public bool IsComplete()
         {
-            if (numberOfSnowmanParts >= bodyParts.Length)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return userSnowman.Count >= bodyParts.Length;
         }
     }
 }
