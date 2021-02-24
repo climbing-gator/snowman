@@ -29,6 +29,9 @@ namespace Snowman
                 display.printGuessText(words);
 
                 guessedChar = userInput.GetInputFirstCharacterToLower();
+                Console.Clear();
+                display.printGuessedChar(userInput);
+                // TODO: I think the if statement ought to be a while statement, as it may not work for multiple non-letter chars
                 if (!words.IsCharacterLetter(guessedChar))
                 {
                     display.printNotALetterText(guessedChar);

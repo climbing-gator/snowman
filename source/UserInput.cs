@@ -6,6 +6,7 @@ namespace Snowman
 {
     class UserInput : IUserInput
     {
+        public char lastGuessedChar;
         public string GetInput()
         {
             return Console.ReadLine();
@@ -14,7 +15,8 @@ namespace Snowman
         public char GetInputFirstCharacterToLower()
         {
             // TODO: Check for null
-            return Console.ReadLine().ToLower()[0];
+            lastGuessedChar = Console.ReadLine().ToLower()[0];
+            return lastGuessedChar;
         }
     }
 }

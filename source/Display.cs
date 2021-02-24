@@ -33,6 +33,12 @@ namespace Snowman
             Console.WriteLine();
             Console.WriteLine("Guess a letter..." + Environment.NewLine);
         }
+        public void printGuessedChar(UserInput userInput)
+        {
+            //TODO Check for null
+            //if (userInput.lastGuessedChar)
+            Console.WriteLine($"You guessed the letter: {userInput.lastGuessedChar}");
+        }
         public void printNoMoreWordsText()
         {
             Console.WriteLine("No more words to guess. Nicely done. Game over.");
