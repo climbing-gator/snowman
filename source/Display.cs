@@ -37,7 +37,7 @@ namespace Snowman
         {
             //TODO Check for null
             //if (userInput.lastGuessedChar)
-            Console.WriteLine($"You guessed the letter: {userInput.lastGuessedChar}");
+            Console.WriteLine($"You guessed the letter: {userInput.lastGuessedChar}" + Environment.NewLine);
         }
         public void printNoMoreWordsText()
         {
@@ -45,7 +45,6 @@ namespace Snowman
         }
         public void printWrongGuessText(SnowmanBody snowman)
         {
-            Console.WriteLine();
             printSnowmanGetsABodyPartText();
             Console.WriteLine();
             printSnowmanBodyParts(snowman);
@@ -53,9 +52,9 @@ namespace Snowman
         public void printSnowmanBodyParts(SnowmanBody snowman)
         {
             Console.WriteLine("Your snowman has grown, he has:");
-            foreach (var parts in snowman.userSnowman)
+            for (int i = snowman.userSnowman.Count - 1; i >= 0; i--)
             {
-                Console.WriteLine(parts);
+                Console.WriteLine(snowman.userSnowman[i]);
             }
             Console.WriteLine();
         }
