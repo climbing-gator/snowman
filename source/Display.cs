@@ -9,6 +9,13 @@ namespace Snowman
         public Display()
         { }
 
+        //TODO: Clean this up
+        public void printUI(Words words, SnowmanBody snowman)
+        {
+            printGuessedWord(words);
+            printSnowmanBodyParts(snowman);
+        }
+
         public void printGuessedWord(Words words)
         {
             foreach (var value in words.guessedWord)
@@ -26,6 +33,12 @@ namespace Snowman
             }
             Console.WriteLine();
         }
+
+        public void printFileRequestText()
+        {
+            Console.WriteLine("Please provide a file of words to guess");
+        }
+
         public void printGuessText(Words words)
         {
             this.printGuessedWord(words);

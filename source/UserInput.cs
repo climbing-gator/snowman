@@ -9,13 +9,16 @@ namespace Snowman
         public char lastGuessedChar;
         public string GetInput()
         {
-            return Console.ReadLine();
+            var input = Console.ReadLine();
+            Console.Clear();
+            return input;
         }
 
         public char GetInputFirstCharacterToLower()
         {
             // TODO: Check for null
             lastGuessedChar = Console.ReadLine().ToLower()[0];
+            Console.Clear();
             return lastGuessedChar;
         }
     }

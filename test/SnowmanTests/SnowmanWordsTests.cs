@@ -42,8 +42,27 @@ namespace SnowmanTests
         }
 
         [Fact]
-        public void LoadWords_UserGuessesCorrectWord_DisplayWinnerText()
+        public void LoadWords_UserGuessesCorrectWord_DisplayWinnerText() 
+        { }
+
+        [Fact]
+        public void LoadWords_UserGuessesIncorrectLetter_DisplayWrongLetterText()
         {
+            string testWord = "apple";
+            var words = MockLoadFile(testWord);
+
+            using (var writer = new StringWriter())
+            {
+                using (var reader = new StringReader("x"))
+                {
+                    Console.SetIn(reader);
+                    Console.SetOut(writer);
+
+                    var displayText = writer.ToString();
+
+                    Assert.StartsWith("l", displayText);
+                }
+            }
         }
 
         [Fact]
