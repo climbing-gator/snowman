@@ -5,7 +5,7 @@ using System.IO;
 
 namespace SnowmanTests
 {
-    public class SnowmanFileTests
+    public class FileTests
     {
         [Fact]
         public void UserDoesNotProvideFilePath_PromptForFilePath()

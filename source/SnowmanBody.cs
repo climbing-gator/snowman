@@ -7,14 +7,19 @@ namespace Snowman
     class SnowmanBody
     {
         private string[] bodyParts = new string[] { "bottom", "middle", "head", "left arm", "right arm", "left eye", "right eye", "mouth", "nose" };
-        public List<string> userSnowman = new List<string>();
-        
+        private List<string> _userSnowman;
+        public List<string> userSnowman { private set => _userSnowman = value; get => _userSnowman; }
         public SnowmanBody()
-        { }
+        {
+            _userSnowman = new List<string>();
+        }
 
         public void AddBodyPart() 
         {
-            userSnowman.Add(bodyParts[userSnowman.Count]);
+            if (userSnowman.Count < bodyParts.Length)
+            {
+                userSnowman.Add(bodyParts[userSnowman.Count]);
+            }
         }
 
         public void ClearBodyParts()

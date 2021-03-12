@@ -6,7 +6,7 @@ using System.IO;
 
 namespace SnowmanTests
 {
-    public class SnowmanWordsTests: IUserInput
+    public class WordsTests: IUserInput
     {
         [Fact]
         public void LoadWords_CurrentWordAndGuessedWordHaveCorrectSize()
@@ -42,41 +42,7 @@ namespace SnowmanTests
         }
 
         [Fact]
-        public void LoadWords_UserGuessesCorrectWord_DisplayWinnerText() 
-        { }
-
-        [Fact]
-        public void LoadWords_UserGuessesIncorrectLetter_DisplayWrongLetterText()
-        {
-            string testWord = "apple";
-            var words = MockLoadFile(testWord);
-
-            using (var writer = new StringWriter())
-            {
-                using (var reader = new StringReader("x"))
-                {
-                    Console.SetIn(reader);
-                    Console.SetOut(writer);
-
-                    var displayText = writer.ToString();
-
-                    Assert.StartsWith("l", displayText);
-                }
-            }
-        }
-
-        [Fact]
         public void LoadWords_UserGuessesAllIncorrectLetters_SnowmanIsBuilt()
-        {
-        }
-
-        [Fact]
-        public void LoadWords_UserGuessesAllIncorrectLetters_DisplayGameOverText()
-        {
-        }
-
-        [Fact]
-        public void LoadWords_UserGuessesCorrectLetterTwice_DisplayNotification()
         {
         }
 
@@ -84,11 +50,6 @@ namespace SnowmanTests
         public void LoadWords_UserGuessesCorrectLetterTwice_SnowmanDoesNotGrow()
         {
         }
-
-        // This goes in SnowmanBodyTests
-        //[Fact]
-        // public void TestSnowmanBodyGoesToZerowhenNewWord
-        //{}
 
         // Helper methods/fields
 
