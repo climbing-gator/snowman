@@ -41,7 +41,7 @@ namespace Snowman
                 // TODO: convert guess into lowercase or do comparision below disregarding case
                 // convert input into either a correct letter that replaces the space or 
                 // a wrong guess, which 'draws' a body part
-                if (words.GuessedCorrectLetter(guessedChar))
+                if (words.IsLetterInWord(guessedChar))
                 {
                     for (int i = 0; i < words.currentWord.Length; i++)
                     {

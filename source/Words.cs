@@ -7,6 +7,7 @@ namespace Snowman
 {
     public class Words
     {
+        //todo: currentWord/guessedword ought to be properties with private setters
         public string currentWord = string.Empty;
         public string[] guessedWord;
         private const string blankSpace = "_____";
@@ -52,7 +53,7 @@ namespace Snowman
             }
         }
 
-        public bool GuessedCorrectLetter(char guessedLetter)
+        public bool IsLetterInWord(char guessedLetter)
         {
             return this.currentWord.Contains(guessedLetter);
         }
