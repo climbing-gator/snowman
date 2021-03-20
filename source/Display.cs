@@ -10,18 +10,53 @@ namespace Snowman
         { }
 
         //TODO: Clean this up
-        public void printUI(Words words, SnowmanBody snowman)
+        public void printUI(Words words, SnowmanBody snowman, UserInput userInput, GuessedLetterState guessedLetterState)
         {
             printGuessedWord(words);
-            printSnowmanBodyParts(snowman);
+            printGuessedChar(userInput);
+            if (!snowman.IsComplete())
+            {
+                switch (guessedLetterState)
+                {
+                    case GuessedLetterState.WrongLetter:
+                        printWrongGuessText();
+                        break;
+                    case GuessedLetterState.CorrectLetter:
+                        //for (int i = 0; i < words.currentWord.Length; i++)
+                        //{
+                        //    if (words.currentWord[i] == userInput.lastGuessedChar)
+                        //    {
+                        //        words.guessedWord[i] = userInput.lastGuessedChar.ToString();
+                        //    }
+                        //}
+                        printCorrectGuessText(userInput);
+                        break;
+                    case GuessedLetterState.NotALetter:
+                        printNotALetterText(userInput);
+                        break;
+                    case GuessedLetterState.NoGuessYet:
+                        break;
+                }
+                printSnowmanBodyParts(snowman);
+                printGuessText();
+            }
+            else
+            {
+                printSnowmanBuiltText();
+                printSecretWordText(words);
+            }
         }
 
         public void printGuessedWord(Words words)
         {
+            Console.WriteLine("The Secret Word:" + Environment.NewLine);
             foreach (var value in words.guessedWord)
             {
                 Console.Write(value + "  ");
             }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         public void printCurrentWord(Words words)
@@ -43,14 +78,22 @@ namespace Snowman
         {
             this.printGuessedWord(words);
             Console.WriteLine();
-            Console.WriteLine();
             Console.WriteLine("Guess a letter..." + Environment.NewLine);
         }
+        public void printGuessText()
+        {
+            Console.WriteLine("Guess a letter..." + Environment.NewLine);
+        }
+
         public void printGuessedChar(UserInput userInput)
         {
             //TODO Check for null
-            //if (userInput.lastGuessedChar)
             Console.WriteLine($"You guessed the letter: {userInput.lastGuessedChar}" + Environment.NewLine);
+        }
+
+        public void printCorrectGuessText(UserInput userInput)
+        {
+            Console.WriteLine($"Good guess! The letter you guessed \"{userInput.lastGuessedChar}\" is in the secret word." + Environment.NewLine);
         }
         public void printNoMoreWordsText()
         {
@@ -62,12 +105,25 @@ namespace Snowman
             Console.WriteLine();
             printSnowmanBodyParts(snowman);
         }
+
+        public void printWrongGuessText()
+        {
+            printSnowmanGetsABodyPartText();
+            Console.WriteLine();
+        }
         public void printSnowmanBodyParts(SnowmanBody snowman)
         {
-            Console.WriteLine("Your snowman has grown, he has:");
-            for (int i = snowman.userSnowman.Count - 1; i >= 0; i--)
+            if (snowman.userSnowman.Count == 0)
             {
-                Console.WriteLine(snowman.userSnowman[i]);
+                Console.WriteLine("Your snowman has no parts yet");
+            }
+            else
+            {
+                Console.WriteLine("Your snowman has the following body parts:");
+                for (int i = snowman.userSnowman.Count - 1; i >= 0; i--)
+                {
+                    Console.WriteLine(snowman.userSnowman[i]);
+                }
             }
             Console.WriteLine();
         }
@@ -94,6 +150,11 @@ namespace Snowman
         {
             Console.WriteLine();
             Console.WriteLine($"{guessedChar} is not a letter. Try again." + Environment.NewLine);
+        }
+        public void printNotALetterText(UserInput userInput)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"{userInput.lastGuessedChar} is not a letter. Try again." + Environment.NewLine);
         }
     }
 }

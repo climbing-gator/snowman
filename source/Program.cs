@@ -11,6 +11,7 @@ namespace Snowman
             bool gameOver = false;
             var userInput = new UserInput();
             var display = new Display();
+            var guessedLetterState = GuessedLetterState.NoGuessYet;
 
             if (args.Length < 1)
             {
@@ -24,18 +25,18 @@ namespace Snowman
             var words = Words.LoadWords("C://Users//Michelle//Desktop//sandbox//words.txt");
             var snowman = new SnowmanBody();
 
+            display.printUI(words, snowman, userInput, guessedLetterState);
+
             while (!gameOver)
             {
-                display.printGuessText(words);
 
                 guessedChar = userInput.GetInputFirstCharacterToLower();
-                display.printGuessedChar(userInput);
                 // TODO: I think the if statement ought to be a while statement, 
                 // as it may not work for multiple non-letter chars
                 if (!words.IsCharacterLetter(guessedChar))
                 {
-                    display.printNotALetterText(guessedChar);
-                    display.printGuessText(words);
+                    guessedLetterState = GuessedLetterState.NotALetter;
+                    display.printUI(words, snowman, userInput, guessedLetterState);
                     guessedChar = userInput.GetInputFirstCharacterToLower();
                 }
                 // TODO: convert guess into lowercase or do comparision below disregarding case
@@ -43,6 +44,7 @@ namespace Snowman
                 // a wrong guess, which 'draws' a body part
                 if (words.IsLetterInWord(guessedChar))
                 {
+                    guessedLetterState = GuessedLetterState.CorrectLetter;
                     for (int i = 0; i < words.currentWord.Length; i++)
                     {
                         if (words.currentWord[i] == guessedChar)
@@ -50,6 +52,7 @@ namespace Snowman
                             words.guessedWord[i] = guessedChar.ToString();
                         }
                     }
+                    display.printUI(words, snowman, userInput, guessedLetterState);
 
                     if (words.GuessedCorrectWord())
                     {
@@ -70,15 +73,17 @@ namespace Snowman
                 }
                 else
                 {
+                    guessedLetterState = GuessedLetterState.WrongLetter;
                     snowman.AddBodyPart();
-                    display.printWrongGuessText(snowman);
+                    display.printUI(words, snowman, userInput, guessedLetterState);
                 }
 
                 if (snowman.IsComplete())
                 { 
                     gameOver = true;
-                    display.printSnowmanBuiltText();
-                    display.printSecretWordText(words);
+                    display.printUI(words, snowman, userInput, guessedLetterState);
+                    //display.printSnowmanBuiltText();
+                    //display.printSecretWordText(words);
                 }
             }
         }

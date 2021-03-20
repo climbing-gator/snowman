@@ -13,6 +13,7 @@ namespace Snowman
         private const string blankSpace = "_____";
         private List<string> allWords = new List<string>();
         private int currentWordIndex = 0;
+
         public Words()
         {
         }
