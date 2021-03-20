@@ -23,13 +23,6 @@ namespace Snowman
                         printWrongGuessText();
                         break;
                     case GuessedLetterState.CorrectLetter:
-                        //for (int i = 0; i < words.currentWord.Length; i++)
-                        //{
-                        //    if (words.currentWord[i] == userInput.lastGuessedChar)
-                        //    {
-                        //        words.guessedWord[i] = userInput.lastGuessedChar.ToString();
-                        //    }
-                        //}
                         printCorrectGuessText(userInput);
                         break;
                     case GuessedLetterState.NotALetter:
