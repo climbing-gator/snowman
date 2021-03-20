@@ -25,10 +25,10 @@ namespace Snowman
             var words = Words.LoadWords("C://Users//Michelle//Desktop//sandbox//words.txt");
             var snowman = new SnowmanBody();
 
-            display.printUI(words, snowman, userInput, guessedLetterState);
 
             while (!gameOver)
             {
+                display.printUI(words, snowman, userInput, guessedLetterState);
 
                 guessedChar = userInput.GetInputFirstCharacterToLower();
                 // TODO: I think the if statement ought to be a while statement, 
@@ -63,6 +63,8 @@ namespace Snowman
                         if (words.RemainingWordsCount() > 0)
                         {
                             words.GetNextWord();
+                            guessedLetterState = GuessedLetterState.NoGuessYet;
+                            userInput.ClearLastGuessedChar();
                             snowman.ClearBodyParts();
                         }
                         else

@@ -12,6 +12,7 @@ namespace Snowman
         //TODO: Clean this up
         public void printUI(Words words, SnowmanBody snowman, UserInput userInput, GuessedLetterState guessedLetterState)
         {
+            Console.Clear();
             printGuessedWord(words);
             printGuessedChar(userInput);
             if (!snowman.IsComplete())
@@ -35,14 +36,16 @@ namespace Snowman
                         printNotALetterText(userInput);
                         break;
                     case GuessedLetterState.CorrectWord:
-                       // printCurrentWord(words);
-                        printWinnerText();
+                        printWinnerText(words);
                         break;
                     case GuessedLetterState.NoGuessYet:
                         break;
                 }
                 printSnowmanBodyParts(snowman);
-                printGuessText();
+                if (!words.GuessedCorrectWord())
+                {
+                    printGuessText();
+                }
             }
             else
             {
@@ -139,10 +142,10 @@ namespace Snowman
         {
             Console.WriteLine("You built the snowman, sad day. Game over!!!");
         }
-        public void printWinnerText()
+        public void printWinnerText(Words words)
         {
             Console.WriteLine();
-            Console.WriteLine("Winner, winner, chicken dinner!! You won!");
+            Console.WriteLine($"Winner, winner, chicken dinner!! You won! You guessed the secret word: {words.currentWord}");
             Console.WriteLine();
         }
         public void printSecretWordText(Words words)

@@ -14,6 +14,11 @@ namespace Snowman
             return input;
         }
 
+        public void ClearLastGuessedChar()
+        {
+            lastGuessedChar = (char)0;
+        }
+
         public char GetInputFirstCharacterToLower()
         {
             // TODO: Check for null

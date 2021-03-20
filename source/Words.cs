@@ -84,9 +84,9 @@ namespace Snowman
             {
                 currentWord = allWords[++currentWordIndex].ToLower();
                 initializeGuessedWord();
-                Console.Clear();
+                //Console.Clear();
                 Console.WriteLine("Here comes the next word to guess...");
-                Console.WriteLine();
+                //Console.WriteLine();
             }
             else
             {
