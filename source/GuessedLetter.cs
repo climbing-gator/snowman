@@ -8,6 +8,7 @@ namespace Snowman
     {
         WrongLetter,
         CorrectLetter,
+        CorrectWord,
         NotALetter,
         NoGuessYet
     }

@@ -34,6 +34,10 @@ namespace Snowman
                     case GuessedLetterState.NotALetter:
                         printNotALetterText(userInput);
                         break;
+                    case GuessedLetterState.CorrectWord:
+                       // printCurrentWord(words);
+                        printWinnerText();
+                        break;
                     case GuessedLetterState.NoGuessYet:
                         break;
                 }

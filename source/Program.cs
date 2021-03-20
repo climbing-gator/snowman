@@ -56,9 +56,11 @@ namespace Snowman
 
                     if (words.GuessedCorrectWord())
                     {
-                        display.printCurrentWord(words);
-                        display.printWinnerText();
-                        if (words.RemainingWords() > 0)
+                        guessedLetterState = GuessedLetterState.CorrectWord;
+                        display.printUI(words, snowman, userInput, guessedLetterState);
+                        //display.printCurrentWord(words);
+                        //display.printWinnerText();
+                        if (words.RemainingWordsCount() > 0)
                         {
                             words.GetNextWord();
                             snowman.ClearBodyParts();

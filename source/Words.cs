@@ -73,14 +73,14 @@ namespace Snowman
             return currentWord.Equals(guessedWordConcatenated);
         }
 
-        public int RemainingWords()
+        public int RemainingWordsCount()
         {
             return allWords.Count - (currentWordIndex + 1);
         }
 
         public void GetNextWord()
         {
-            if (currentWordIndex + 1 < allWords.Count)
+            if (RemainingWordsCount() > 0)
             {
                 currentWord = allWords[++currentWordIndex].ToLower();
                 initializeGuessedWord();
